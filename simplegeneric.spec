@@ -4,7 +4,7 @@
 #
 Name     : simplegeneric
 Version  : 0.8.1
-Release  : 11
+Release  : 12
 URL      : https://pypi.python.org/packages/source/s/simplegeneric/simplegeneric-0.8.1.zip
 Source0  : https://pypi.python.org/packages/source/s/simplegeneric/simplegeneric-0.8.1.zip
 Summary  : Simple generic functions (similar to Python's own len(), pickle.dump(), etc.)
