@@ -4,13 +4,14 @@
 #
 Name     : simplegeneric
 Version  : 0.8.1
-Release  : 25
+Release  : 26
 URL      : http://pypi.debian.net/simplegeneric/simplegeneric-0.8.1.zip
 Source0  : http://pypi.debian.net/simplegeneric/simplegeneric-0.8.1.zip
 Summary  : Simple generic functions (similar to Python's own len(), pickle.dump(), etc.)
 Group    : Development/Tools
 License  : ZPL-2.1
 Requires: simplegeneric-legacypython
+Requires: simplegeneric-python3
 Requires: simplegeneric-python
 BuildRequires : pbr
 BuildRequires : pip
@@ -30,6 +31,7 @@ Trivial Generic Functions
 %package legacypython
 Summary: legacypython components for the simplegeneric package.
 Group: Default
+Requires: python-core
 
 %description legacypython
 legacypython components for the simplegeneric package.
@@ -39,9 +41,19 @@ legacypython components for the simplegeneric package.
 Summary: python components for the simplegeneric package.
 Group: Default
 Requires: simplegeneric-legacypython
+Requires: simplegeneric-python3
 
 %description python
 python components for the simplegeneric package.
+
+
+%package python3
+Summary: python3 components for the simplegeneric package.
+Group: Default
+Requires: python3-core
+
+%description python3
+python3 components for the simplegeneric package.
 
 
 %prep
@@ -52,7 +64,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1505425018
+export SOURCE_DATE_EPOCH=1507179265
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -62,7 +74,7 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test
 %install
-export SOURCE_DATE_EPOCH=1505425018
+export SOURCE_DATE_EPOCH=1507179265
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
@@ -78,5 +90,8 @@ echo ----[ mark ]----
 /usr/lib/python2*/*
 
 %files python
+%defattr(-,root,root,-)
+
+%files python3
 %defattr(-,root,root,-)
 /usr/lib/python3*/*
