@@ -4,13 +4,12 @@
 #
 Name     : simplegeneric
 Version  : 0.8.1
-Release  : 29
+Release  : 30
 URL      : http://pypi.debian.net/simplegeneric/simplegeneric-0.8.1.zip
 Source0  : http://pypi.debian.net/simplegeneric/simplegeneric-0.8.1.zip
 Summary  : Simple generic functions (similar to Python's own len(), pickle.dump(), etc.)
 Group    : Development/Tools
 License  : ZPL-2.1
-Requires: simplegeneric-legacypython
 Requires: simplegeneric-python3
 Requires: simplegeneric-python
 BuildRequires : pbr
@@ -28,19 +27,9 @@ Trivial Generic Functions
 * New in 0.7: `Multiple Types or Objects`_
 * New in 0.6: `Inspection and Extension`_, and thread-safe method registration
 
-%package legacypython
-Summary: legacypython components for the simplegeneric package.
-Group: Default
-Requires: python-core
-
-%description legacypython
-legacypython components for the simplegeneric package.
-
-
 %package python
 Summary: python components for the simplegeneric package.
 Group: Default
-Requires: simplegeneric-legacypython
 Requires: simplegeneric-python3
 
 %description python
@@ -64,8 +53,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1507179265
-python2 setup.py build -b py2
+export SOURCE_DATE_EPOCH=1523307719
 python3 setup.py build -b py3
 
 %check
@@ -74,20 +62,14 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test
 %install
-export SOURCE_DATE_EPOCH=1507179265
 rm -rf %{buildroot}
-python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
-python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
+python3 -tt setup.py build -b py3 install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
-
-%files legacypython
-%defattr(-,root,root,-)
-/usr/lib/python2*/*
 
 %files python
 %defattr(-,root,root,-)

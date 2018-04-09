@@ -5,4 +5,6 @@ ipython
 ipython-sql
 jupyter
 jupyter-notebook-gist
+jupyterlab
+jupyterlab_launcher
 notebook
