@@ -4,7 +4,7 @@
 #
 Name     : simplegeneric
 Version  : 0.8.1
-Release  : 34
+Release  : 35
 URL      : http://pypi.debian.net/simplegeneric/simplegeneric-0.8.1.zip
 Source0  : http://pypi.debian.net/simplegeneric/simplegeneric-0.8.1.zip
 Summary  : Simple generic functions (similar to Python's own len(), pickle.dump(), etc.)
@@ -14,7 +14,6 @@ Requires: simplegeneric-python3
 Requires: simplegeneric-python
 BuildRequires : pbr
 BuildRequires : pip
-
 BuildRequires : python3-dev
 BuildRequires : setuptools
 
@@ -53,14 +52,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1523307719
+export SOURCE_DATE_EPOCH=1530330151
 python3 setup.py build -b py3
 
 %check
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test
+PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test
 %install
 rm -rf %{buildroot}
 python3 -tt setup.py build -b py3 install --root=%{buildroot}
