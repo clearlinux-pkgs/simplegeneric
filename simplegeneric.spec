@@ -4,7 +4,7 @@
 #
 Name     : simplegeneric
 Version  : 0.8.1
-Release  : 45
+Release  : 46
 URL      : http://pypi.debian.net/simplegeneric/simplegeneric-0.8.1.zip
 Source0  : http://pypi.debian.net/simplegeneric/simplegeneric-0.8.1.zip
 Summary  : Simple generic functions (similar to Python's own len(), pickle.dump(), etc.)
@@ -36,6 +36,7 @@ python components for the simplegeneric package.
 Summary: python3 components for the simplegeneric package.
 Group: Default
 Requires: python3-core
+Provides: pypi(simplegeneric)
 
 %description python3
 python3 components for the simplegeneric package.
@@ -50,7 +51,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1576015743
+export SOURCE_DATE_EPOCH=1582922385
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
